@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+BASE_DIR="$(dirname "$(realpath "$0")")/.."
+source "$BASE_DIR/lib/focus-timer.sh"
+run_timer

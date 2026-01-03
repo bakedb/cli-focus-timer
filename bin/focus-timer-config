@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+CONFIG_FILE="$HOME/.config/focus-timer/config.ini"
+
+case "$1" in
+    set)
+        key="$2"
+        value="$3"
+        sed -i "s/^$key=.*/$key=$value/" "$CONFIG_FILE"
+        ;;
+    get)
+        grep "^$2=" "$CONFIG_FILE" | cut -d= -f2
+        ;;
+    reset)
+        cp "$HOME/.local/share/focus-timer/config/config.ini" "$CONFIG_FILE"
+        ;;
+    *)
+        echo "Usage:"
+        echo "  focus-timer-config set <key> <value>"
+        echo "  focus-timer-config get <key>"
+        echo "  focus-timer-config reset"
+        ;;
+esac
